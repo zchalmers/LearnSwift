@@ -15,6 +15,7 @@ protocol FoodRecipeDelegate: AnyObject {
 protocol FoodRecipeDataSource: AnyObject {
     var viewModel: FoodRecipeViewModel { get }
     var foodItem: FoodItem { get }
+    func getSections() -> [FoodRecipeSectionModel]
     
 }
 class FoodRecipePresenter {
@@ -55,7 +56,12 @@ extension FoodRecipePresenter: FoodRecipeDataSource {
         }
     }
     
-    
+    func getSections() -> [FoodRecipeSectionModel] {
+        var sectionModels = [FoodRecipeSectionModel]()
+        
+        sectionModels.append(FoodRecipeSectionModel(section: .recipe, rows: viewModel.getRowModels()))
+        return sectionModels
+    }
 }
 
 
