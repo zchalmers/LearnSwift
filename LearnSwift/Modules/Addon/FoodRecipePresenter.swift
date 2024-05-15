@@ -21,7 +21,6 @@ class FoodRecipePresenter {
     private weak var view: FoodRecipeView?
     var viewModel: FoodRecipeViewModel
     var foodItem: FoodItem
-    var foodRecipe: FoodRecipe?
     var learnNetworkService: LearnSwiftNetworkService
     
     init(view: FoodRecipeView, foodItem: FoodItem){
