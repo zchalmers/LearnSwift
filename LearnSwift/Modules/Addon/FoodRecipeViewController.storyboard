@@ -28,18 +28,18 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="17G-pK-cra">
-                                                    <rect key="frame" x="20" y="11.666666666666666" width="180" height="20.666666666666671"/>
+                                                    <rect key="frame" x="20" y="11.666666666666666" width="183" height="20.666666666666671"/>
                                                     <accessibility key="accessibilityConfiguration" identifier="recipeLabel"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="180" id="ohC-xQ-MMQ"/>
-                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quantity" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t8m-pZ-cQb">
-                                                    <rect key="frame" x="308.33333333333331" y="11.666666666666666" width="64.666666666666686" height="20.666666666666671"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Quantity" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t8m-pZ-cQb">
+                                                    <rect key="frame" x="223" y="11.666666666666666" width="150" height="20.666666666666671"/>
                                                     <accessibility key="accessibilityConfiguration" identifier="recipeQuantity"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="150" id="lko-Av-WHd" userLabel="width = 100"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -47,12 +47,13 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="17G-pK-cra" firstAttribute="leading" secondItem="uVy-4D-aaM" secondAttribute="leading" constant="20" id="2fP-zl-VbV"/>
-                                                <constraint firstItem="t8m-pZ-cQb" firstAttribute="top" secondItem="uVy-4D-aaM" secondAttribute="top" constant="11.67" id="L90-Fy-2om"/>
-                                                <constraint firstItem="17G-pK-cra" firstAttribute="top" secondItem="uVy-4D-aaM" secondAttribute="top" constant="11.67" id="XYp-yI-VA0"/>
+                                                <constraint firstItem="17G-pK-cra" firstAttribute="top" secondItem="uVy-4D-aaM" secondAttribute="top" constant="11.67" id="Bvo-8i-bie"/>
+                                                <constraint firstAttribute="bottom" secondItem="17G-pK-cra" secondAttribute="bottom" constant="11.67" id="URD-a4-Zwi"/>
                                                 <constraint firstAttribute="trailing" secondItem="t8m-pZ-cQb" secondAttribute="trailing" constant="20" id="fWy-C1-f5N"/>
-                                                <constraint firstAttribute="bottom" secondItem="17G-pK-cra" secondAttribute="bottom" constant="11.67" id="gk1-t4-RjH"/>
-                                                <constraint firstAttribute="bottom" secondItem="t8m-pZ-cQb" secondAttribute="bottom" constant="11.67" id="jO4-ob-5pv"/>
+                                                <constraint firstItem="t8m-pZ-cQb" firstAttribute="leading" secondItem="17G-pK-cra" secondAttribute="trailing" constant="20" id="g6J-ng-0na"/>
+                                                <constraint firstAttribute="bottom" secondItem="t8m-pZ-cQb" secondAttribute="bottom" constant="11.67" id="gfs-Gv-2cI"/>
                                                 <constraint firstItem="t8m-pZ-cQb" firstAttribute="centerY" secondItem="uVy-4D-aaM" secondAttribute="centerY" id="jlv-kA-4gW"/>
+                                                <constraint firstItem="t8m-pZ-cQb" firstAttribute="top" secondItem="uVy-4D-aaM" secondAttribute="top" constant="11.67" id="nat-oG-xJ2"/>
                                                 <constraint firstItem="17G-pK-cra" firstAttribute="centerY" secondItem="uVy-4D-aaM" secondAttribute="centerY" id="vVq-qZ-8WE"/>
                                             </constraints>
                                         </tableViewCellContentView>

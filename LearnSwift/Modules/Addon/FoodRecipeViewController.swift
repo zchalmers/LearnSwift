@@ -31,8 +31,10 @@ class FoodRecipeViewController: UIViewController, FoodRecipeView{
     
     override func viewDidLoad(){
         super.viewDidLoad();
+        self.navigationItem.title = dataSource.foodItem.name
         setupTableView()
         delegate.viewDidLoad()
+    
     }
     
     func updateView(){
@@ -42,8 +44,10 @@ class FoodRecipeViewController: UIViewController, FoodRecipeView{
     func setupTableView(){
         tableView.register(SectionHeaderView.self, forHeaderFooterViewReuseIdentifier: SectionHeaderView.reuseIdentifier)
         tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 40
         tableView.sectionHeaderHeight = UITableView.automaticDimension
         tableView.sectionFooterHeight = UITableView.automaticDimension
+        tableView.estimatedSectionHeaderHeight = 30.0
         tableView.estimatedSectionFooterHeight = 25
         tableView.isEditing = false
     }
@@ -53,7 +57,7 @@ class FoodRecipeViewController: UIViewController, FoodRecipeView{
 extension FoodRecipeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return CGFloat.leastNormalMagnitude
+        return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -64,15 +68,18 @@ extension FoodRecipeViewController: UITableViewDelegate {
         guard let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: SectionHeaderView.reuseIdentifier) as? SectionHeaderView else {
             return nil
         }
-        view.textLabel?.text = dataSource.foodItem.name
+        view.textLabel?.text = "Ingredients"
         view.textLabel?.font = .boldSystemFont(ofSize: 14.0)
         view.imageView.image = UIImage(systemName: "fork.knife")
         
         return view
     }
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+        
     }
+    
 }
 
 extension FoodRecipeViewController: UITableViewDataSource {
@@ -91,7 +98,12 @@ extension FoodRecipeViewController: UITableViewDataSource {
         
         return cell
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource.viewModel.foodRecipe?.foodIngredients.count ?? 2
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
 }
