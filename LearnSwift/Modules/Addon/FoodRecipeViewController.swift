@@ -78,11 +78,11 @@ class FoodRecipeViewController: UIViewController, FoodRecipeView{
 extension FoodRecipeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return UITableView.automaticDimension 
+        return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return CGFloat.leastNormalMagnitude
+        return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -91,6 +91,14 @@ extension FoodRecipeViewController: UITableViewDelegate {
         }
         view.measurement.text = "Measurement"
         view.ingredients.text = "Ingredients"
+        
+        return view
+    }
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        
+        let view = UILabel()
+        view.numberOfLines = 0
+        view.text = dataSource.foodItem.summary
         
         return view
     }

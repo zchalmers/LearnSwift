@@ -13,4 +13,5 @@ public struct FoodItem: Hashable, Decodable {
     let name: String
     let category: FoodCategory
     let description: String
+    let summary: String
 }

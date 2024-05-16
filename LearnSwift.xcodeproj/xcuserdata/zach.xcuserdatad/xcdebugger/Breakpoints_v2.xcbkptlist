@@ -3,4 +3,70 @@
    uuid = "B1E25079-BE22-45EF-A8DB-9F9E74FA4694"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8DF723D7-1264-4DEB-B13A-A0B2E4F74FE9"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LearnSwift/Modules/Networking/LearnSwiftNetworkService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "fetchFoodItems(foodCategory:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "536D8DFE-E49A-494C-B5F0-E69C4B70C9E6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LearnSwift/Modules/Networking/LearnSwiftNetworkService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "fetchFoodItems(foodCategory:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "536D8DFE-E49A-494C-B5F0-E69C4B70C9E6 - 4799e049a146ea55"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.CheckedContinuation&lt;Swift.Array&lt;LearnSwift.FoodItem&gt;, Swift.Error&gt;) -&gt; () in LearnSwift.LearnSwiftNetworkService.fetchFoodItems(foodCategory: LearnSwift.FoodCategory) async throws -&gt; Swift.Array&lt;LearnSwift.FoodItem&gt;"
+                  moduleName = "LearnSwift"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zach/Downloads/LearnSwift/LearnSwift/Modules/Networking/LearnSwiftNetworkService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "102"
+                  endingLineNumber = "102"
+                  offsetFromSymbolStart = "967">
+               </Location>
+               <Location
+                  uuid = "536D8DFE-E49A-494C-B5F0-E69C4B70C9E6 - 4799e049a146ea55"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.CheckedContinuation&lt;Swift.Array&lt;LearnSwift.FoodItem&gt;, Swift.Error&gt;) -&gt; () in LearnSwift.LearnSwiftNetworkService.fetchFoodItems(foodCategory: LearnSwift.FoodCategory) async throws -&gt; Swift.Array&lt;LearnSwift.FoodItem&gt;"
+                  moduleName = "LearnSwift"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zach/Downloads/LearnSwift/LearnSwift/Modules/Networking/LearnSwiftNetworkService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "102"
+                  endingLineNumber = "102"
+                  offsetFromSymbolStart = "1051">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
