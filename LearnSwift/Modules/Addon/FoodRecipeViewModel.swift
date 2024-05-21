@@ -7,13 +7,17 @@
 
 import Foundation
 import UIKit
+
 enum FoodRecipeSection {
     case recipe
+    case summary
 }
+
 public struct FoodRecipeViewModel {
     var foodRecipe: FoodRecipe?
     
     init(){}
+    
     func getRowModels() -> [FoodRecipeRowModel] {
         guard let foodIngredients = foodRecipe?.foodIngredients else {
             return []
@@ -27,7 +31,7 @@ public struct FoodRecipeViewModel {
 
 struct FoodRecipeSectionModel: Hashable {
     let section: FoodRecipeSection
-    let rows: [FoodRecipeRowModel]
+    let rows: [RecipeRowModel]
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(section)
@@ -49,10 +53,10 @@ class RecipeRowModel: NSObject {
 }
 
 class FoodRecipeRowModel: RecipeRowModel {
-
+    
     var ingredient: String
     var measurement: String
-
+    
     init(ingredient: String, measurement: String) {
         self.ingredient = ingredient
         self.measurement = measurement
@@ -71,13 +75,43 @@ class FoodRecipeRowModel: RecipeRowModel {
     }
     
     static func == (lhs: FoodRecipeRowModel, rhs: FoodRecipeRowModel) -> Bool {
-            return lhs.ingredient == rhs.ingredient && lhs.measurement == rhs.measurement
-        }
-        
+        return lhs.ingredient == rhs.ingredient && lhs.measurement == rhs.measurement
+    }
+    
     override var hash: Int {
         var hasher = Hasher()
         hasher.combine(ingredient)
         hasher.combine(measurement)
+        return hasher.finalize()
+    }
+    
+    
+}
+
+class FoodSummaryRowModel: RecipeRowModel {
+    var item: FoodItem
+    
+    init(item: FoodItem) {
+        self.item = item
+    }
+    
+    override func getRowCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = UITableViewCell()
+        cell.selectionStyle = .none
+        cell.textLabel?.numberOfLines = 0
+        cell.textLabel?.text = item.summary
+        
+        return cell
+    }
+    
+    static func == (lhs: FoodSummaryRowModel, rhs: FoodSummaryRowModel) -> Bool {
+        return lhs.item == rhs.item
+    }
+    
+    override var hash: Int {
+        var hasher = Hasher()
+        hasher.combine(item)
         return hasher.finalize()
     }
     
