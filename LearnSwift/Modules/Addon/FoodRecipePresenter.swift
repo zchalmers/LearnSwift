@@ -60,7 +60,6 @@ extension FoodRecipePresenter: FoodRecipeDataSource {
         var sectionModels = [FoodRecipeSectionModel]()
         
         sectionModels.append(FoodRecipeSectionModel(section: .recipe, rows: viewModel.getRowModels()))
-        sectionModels.append(FoodRecipeSectionModel(section: .summary, rows: [FoodSummaryRowModel(item: foodItem)]))
         return sectionModels
     }
 }

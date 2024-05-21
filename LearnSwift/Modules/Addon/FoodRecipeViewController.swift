@@ -18,7 +18,7 @@ class FoodRecipeViewController: UIViewController, FoodRecipeView{
     var delegate: FoodRecipeDelegate!
     var dataSource: FoodRecipeDataSource!
     @IBOutlet weak var tableView: UITableView!
-    var diffableDataSource: UITableViewDiffableDataSource<FoodRecipeSectionModel, RecipeRowModel>?
+    var diffableDataSource: UITableViewDiffableDataSource<FoodRecipeSectionModel, FoodRecipeRowModel>?
     
     class func instantiateViewController() -> FoodRecipeViewController {
         let bundle = Bundle(for: FoodRecipeViewController.self)
@@ -55,7 +55,7 @@ class FoodRecipeViewController: UIViewController, FoodRecipeView{
     }
     
     func setupDiffableDataSource(){
-        diffableDataSource = UITableViewDiffableDataSource<FoodRecipeSectionModel, RecipeRowModel>(tableView: self.tableView, cellProvider: {  tableView, indexPath, row in
+        diffableDataSource = UITableViewDiffableDataSource<FoodRecipeSectionModel, FoodRecipeRowModel>(tableView: self.tableView, cellProvider: {  tableView, indexPath, row in
             return row.getRowCell(tableView: tableView, indexPath: indexPath)
         })
 
@@ -63,7 +63,7 @@ class FoodRecipeViewController: UIViewController, FoodRecipeView{
     }
     
     func updateSnapshot(animated: Bool = false) {
-        var snapshot = NSDiffableDataSourceSnapshot<FoodRecipeSectionModel, RecipeRowModel>()
+        var snapshot = NSDiffableDataSourceSnapshot<FoodRecipeSectionModel, FoodRecipeRowModel>()
 
         dataSource.getSections()
             .forEach { section in
@@ -78,9 +78,7 @@ class FoodRecipeViewController: UIViewController, FoodRecipeView{
 extension FoodRecipeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return UITableView.automaticDimension
-        
-        return 40.0
+        return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -91,50 +89,18 @@ extension FoodRecipeViewController: UITableViewDelegate {
         guard let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: RecipeHeaderView.reuseIdentifier) as? RecipeHeaderView else {
             return nil
         }
-        
-        guard let sections = diffableDataSource?.snapshot().sectionIdentifiers else { return nil }
-        
-        switch sections[section].section {
-        case .recipe:
-            view.measurement.text = "Measurement"
-            view.ingredients.text = "Ingredients"
-//            return view
-            
-        case .summary:
-            view.ingredients.text = "Summary"
-            view.measurement.text = ""
-            
-//            return view
-        }
+        view.measurement.text = "Measurement"
+        view.ingredients.text = "Ingredients"
         
         return view
     }
-    
-//    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-//
-//        let view = UILabel()
-//        view.numberOfLines = 0
-//        view.text = dataSource.foodItem.summary
-//
-//        return view
-//    }
-    
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        guard let sections = diffableDataSource?.snapshot().sectionIdentifiers else { return nil }
         
-        switch sections[section].section {
-        case .recipe:
-            let view = UITableViewHeaderFooterView()
-            view.contentView.backgroundColor = .lightGray
-
-            return view
-            
-        case .summary:
-            return nil
-            
-        }
+        let view = UILabel()
+        view.numberOfLines = 0
+        view.text = dataSource.foodItem.summary
         
-        
+        return view
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
