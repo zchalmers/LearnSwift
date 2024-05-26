@@ -83,6 +83,7 @@ extension FoodItemPresenter: FoodItemDelegate, UISearchResultsUpdating, UISearch
             //            view.showLoadingIndicator()
             
             viewModel.searchFoodItems = foodItems?.filter { $0.name.contains(query) } ?? [FoodItem]()
+            view.updateView()
             
         } else {
             if view.isSearching {
@@ -111,7 +112,12 @@ extension FoodItemPresenter: FoodItemDataSource {
     func getSections() -> [FoodItemSectionModel] {
         var sectionModels = [FoodItemSectionModel]()
         
-        sectionModels.append(FoodItemSectionModel(section: .item, rows: viewModel.getRowModels()))
+        if view?.isSearching ?? false {
+            sectionModels.append(FoodItemSectionModel(section: .item, rows: viewModel.getSearchRowModels()))
+        } else {
+            sectionModels.append(FoodItemSectionModel(section: .item, rows: viewModel.getRowModels()))
+        }
+        
         return sectionModels
     }
     

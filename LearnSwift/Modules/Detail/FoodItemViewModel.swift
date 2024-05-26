@@ -25,6 +25,12 @@ public struct FoodItemViewModel {
             return FoodItemRowModel(item: foodItem)
         }
     }
+    
+    func getSearchRowModels() -> [FoodItemRowModel] {
+        return searchFoodItems.map { foodItem -> FoodItemRowModel in
+            return FoodItemRowModel(item: foodItem)
+        }
+    }
 }
 
 struct FoodItemSectionModel: Hashable {
