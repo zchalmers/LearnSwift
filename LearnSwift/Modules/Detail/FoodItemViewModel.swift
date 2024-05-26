@@ -14,6 +14,7 @@ enum FoodItemSection {
 
 public struct FoodItemViewModel {
     var foodItems: [FoodItem]
+    var searchFoodItems: [FoodItem] = [FoodItem]()
     
     init(foodCategory: FoodCategory) {
         self.foodItems = FoodDataManager.shared.getItemsForCategory(category: foodCategory)
