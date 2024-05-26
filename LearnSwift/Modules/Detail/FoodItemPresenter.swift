@@ -44,6 +44,7 @@ extension FoodItemPresenter: FoodItemDelegate, UISearchResultsUpdating, UISearch
     
     func viewDidLoad() {
         Task{
+            searchSubscriber()
             await getFoodItems()
             DispatchQueue.main.async {
                 self.view?.updateView()
