@@ -18,7 +18,7 @@ class FoodRecipeViewController: UIViewController, FoodRecipeView{
     var delegate: FoodRecipeDelegate!
     var dataSource: FoodRecipeDataSource!
     @IBOutlet weak var tableView: UITableView!
-    var diffableDataSource: UITableViewDiffableDataSource<FoodRecipeSectionModel, FoodRecipeRowModel>?
+    var diffableDataSource: UITableViewDiffableDataSource<FoodRecipeSectionModel, RecipeRowModel>?
     
     class func instantiateViewController() -> FoodRecipeViewController {
         let bundle = Bundle(for: FoodRecipeViewController.self)
@@ -55,7 +55,7 @@ class FoodRecipeViewController: UIViewController, FoodRecipeView{
     }
     
     func setupDiffableDataSource(){
-        diffableDataSource = UITableViewDiffableDataSource<FoodRecipeSectionModel, FoodRecipeRowModel>(tableView: self.tableView, cellProvider: {  tableView, indexPath, row in
+        diffableDataSource = UITableViewDiffableDataSource<FoodRecipeSectionModel, RecipeRowModel>(tableView: self.tableView, cellProvider: {  tableView, indexPath, row in
             return row.getRowCell(tableView: tableView, indexPath: indexPath)
         })
 
@@ -63,7 +63,7 @@ class FoodRecipeViewController: UIViewController, FoodRecipeView{
     }
     
     func updateSnapshot(animated: Bool = false) {
-        var snapshot = NSDiffableDataSourceSnapshot<FoodRecipeSectionModel, FoodRecipeRowModel>()
+        var snapshot = NSDiffableDataSourceSnapshot<FoodRecipeSectionModel, RecipeRowModel>()
 
         dataSource.getSections()
             .forEach { section in
@@ -82,7 +82,8 @@ extension FoodRecipeViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return UITableView.automaticDimension
+//        return UITableView.automaticDimension
+        return CGFloat.leastNormalMagnitude
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -94,14 +95,14 @@ extension FoodRecipeViewController: UITableViewDelegate {
         
         return view
     }
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        
-        let view = UILabel()
-        view.numberOfLines = 0
-        view.text = dataSource.foodItem.summary
-        
-        return view
-    }
+    
+//    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+//        let view = UILabel()
+//        view.numberOfLines = 0
+//        view.text = dataSource.foodItem.summary
+//
+//        return view
+//    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension

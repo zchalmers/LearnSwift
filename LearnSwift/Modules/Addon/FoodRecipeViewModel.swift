@@ -7,9 +7,12 @@
 
 import Foundation
 import UIKit
+
 enum FoodRecipeSection {
     case recipe
+    case summary
 }
+
 public struct FoodRecipeViewModel {
     var foodRecipe: FoodRecipe?
     
@@ -27,13 +30,13 @@ public struct FoodRecipeViewModel {
 
 struct FoodRecipeSectionModel: Hashable {
     let section: FoodRecipeSection
-    let rows: [FoodRecipeRowModel]
+    let rows: [RecipeRowModel]
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(section)
         hasher.combine(rows)
     }
-
+    
     static func == (lhs: FoodRecipeSectionModel, rhs: FoodRecipeSectionModel) -> Bool {
         let isEqual = lhs.section == rhs.section &&
         lhs.rows == rhs.rows
@@ -49,10 +52,10 @@ class RecipeRowModel: NSObject {
 }
 
 class FoodRecipeRowModel: RecipeRowModel {
-
+    
     var ingredient: String
     var measurement: String
-
+    
     init(ingredient: String, measurement: String) {
         self.ingredient = ingredient
         self.measurement = measurement
@@ -71,16 +74,43 @@ class FoodRecipeRowModel: RecipeRowModel {
     }
     
     static func == (lhs: FoodRecipeRowModel, rhs: FoodRecipeRowModel) -> Bool {
-            return lhs.ingredient == rhs.ingredient && lhs.measurement == rhs.measurement
-        }
-        
+        return lhs.ingredient == rhs.ingredient && lhs.measurement == rhs.measurement
+    }
+    
     override var hash: Int {
         var hasher = Hasher()
         hasher.combine(ingredient)
         hasher.combine(measurement)
         return hasher.finalize()
     }
-    
-    
 }
 
+class FoodSummaryRowModel: RecipeRowModel {
+    
+    var foodItem: FoodItem
+    
+    init(foodItem: FoodItem) {
+        self.foodItem = foodItem
+    }
+    
+    override func getRowCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
+        cell.selectionStyle = .none
+        cell.isUserInteractionEnabled = false
+        cell.textLabel?.numberOfLines = 0
+        cell.textLabel?.text = foodItem.summary
+        
+        return cell
+    }
+    
+    static func == (lhs: FoodSummaryRowModel, rhs: FoodSummaryRowModel) -> Bool {
+        return lhs.foodItem == rhs.foodItem
+    }
+    
+    override var hash: Int {
+        var hasher = Hasher()
+        hasher.combine(foodItem)
+        return hasher.finalize()
+    }
+}

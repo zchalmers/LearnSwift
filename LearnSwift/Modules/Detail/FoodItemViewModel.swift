@@ -14,6 +14,7 @@ enum FoodItemSection {
 
 public struct FoodItemViewModel {
     var foodItems: [FoodItem]
+    var searchFoodItems: [FoodItem] = [FoodItem]()
     
     init(foodCategory: FoodCategory) {
         self.foodItems = FoodDataManager.shared.getItemsForCategory(category: foodCategory)
@@ -21,6 +22,12 @@ public struct FoodItemViewModel {
     
     func getRowModels() -> [FoodItemRowModel] {
         return foodItems.map { foodItem -> FoodItemRowModel in
+            return FoodItemRowModel(item: foodItem)
+        }
+    }
+    
+    func getSearchRowModels() -> [FoodItemRowModel] {
+        return searchFoodItems.map { foodItem -> FoodItemRowModel in
             return FoodItemRowModel(item: foodItem)
         }
     }

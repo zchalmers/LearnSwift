@@ -10,6 +10,7 @@ import UIKit
 protocol FoodItemView: AnyObject {
     func setupTableView()
     func updateView()
+    var isSearching: Bool { get set }
 }
 
 class FoodItemViewController: UIViewController, FoodItemView {
@@ -19,6 +20,8 @@ class FoodItemViewController: UIViewController, FoodItemView {
     @IBOutlet weak var tableView: UITableView!
     
     var diffableDataSource: UITableViewDiffableDataSource<FoodItemSectionModel, FoodItemRowModel>?
+    var searchController: UISearchController?
+    var isSearching: Bool = false
     
     class func instantiateViewController() -> FoodItemViewController {
         let bundle = Bundle(for: FoodItemViewController.self)
@@ -32,6 +35,7 @@ class FoodItemViewController: UIViewController, FoodItemView {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        setupSearchController()
         delegate.viewDidLoad()
     }
     
@@ -68,6 +72,15 @@ class FoodItemViewController: UIViewController, FoodItemView {
             }
 
         diffableDataSource?.apply(snapshot, animatingDifferences: animated)
+    }
+    
+    func setupSearchController() {
+        searchController = UISearchController(searchResultsController: nil)
+        searchController?.searchResultsUpdater = delegate as? UISearchResultsUpdating
+        searchController?.searchBar.delegate = delegate as? UISearchBarDelegate
+
+        self.navigationItem.searchController = self.searchController
+        self.navigationItem.hidesSearchBarWhenScrolling = false
     }
 
 }
