@@ -83,7 +83,7 @@ extension FoodItemPresenter: FoodItemDelegate, UISearchResultsUpdating, UISearch
         if !query.isEmpty {
             //            view.showLoadingIndicator()
             
-            viewModel.searchFoodItems = foodItems?.filter { $0.name.contains(query) } ?? [FoodItem]()
+            viewModel.searchFoodItems = viewModel.foodItems.filter { $0.name.localizedCaseInsensitiveContains(query) }
             view.updateView()
             
         } else {

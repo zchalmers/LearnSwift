@@ -100,6 +100,7 @@ class FoodSummaryRowModel: RecipeRowModel {
         cell.isUserInteractionEnabled = false
         cell.textLabel?.numberOfLines = 0
         cell.textLabel?.text = foodItem.summary
+        cell.textLabel?.textColor = .black
         
         return cell
     }

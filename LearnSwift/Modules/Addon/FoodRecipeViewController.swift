@@ -30,8 +30,8 @@ class FoodRecipeViewController: UIViewController, FoodRecipeView{
     }
     
     override func viewDidLoad(){
+        //self.navigationItem.title = dataSource.foodItem.name
         super.viewDidLoad();
-        self.navigationItem.title = dataSource.foodItem.name
         setupTableView()
         delegate.viewDidLoad()
     
@@ -64,11 +64,31 @@ class FoodRecipeViewController: UIViewController, FoodRecipeView{
     
     func updateSnapshot(animated: Bool = false) {
         var snapshot = NSDiffableDataSourceSnapshot<FoodRecipeSectionModel, RecipeRowModel>()
-
-        dataSource.getSections()
+        
+        
+        //TODO: figure out how to get the right sections
+        
+        
+        dataSource.getSections()     // janky
             .forEach { section in
-                snapshot.appendSections([section])
-                snapshot.appendItems(section.rows)
+                if let firstRow = section.rows.first {
+                    
+                    if firstRow is FoodSummaryRowModel {
+                        
+                        snapshot.appendItems(section.rows)
+                        
+                    } else if firstRow is FoodRecipeRowModel {
+                        
+                        snapshot.appendSections([section])
+                        snapshot.appendItems(section.rows)
+                        
+                    }
+                    
+                } else {
+	                    snapshot.appendSections([section])
+                }
+                
+                
             }
 
         diffableDataSource?.apply(snapshot, animatingDifferences: animated)
@@ -79,11 +99,12 @@ extension FoodRecipeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return UITableView.automaticDimension
+        
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-//        return UITableView.automaticDimension
-        return CGFloat.leastNormalMagnitude
+        return UITableView.automaticDimension
+        //return CGFloat.leastNormalMagnitude
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
