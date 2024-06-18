@@ -95,13 +95,15 @@ class FoodSummaryRowModel: RecipeRowModel {
     
     override func getRowCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
+        let cell = UITableViewCell(style: .default, reuseIdentifier: "Summary")
         cell.selectionStyle = .none
         cell.isUserInteractionEnabled = false
         cell.textLabel?.numberOfLines = 0
         cell.textLabel?.text = foodItem.summary
-        cell.textLabel?.textColor = .black
         
+        //TODO: FIX THE COLOR OF THIS SUMMARY
+        
+        cell.textLabel?.textColor = .black
         return cell
     }
     

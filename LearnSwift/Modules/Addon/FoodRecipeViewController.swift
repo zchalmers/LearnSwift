@@ -30,10 +30,11 @@ class FoodRecipeViewController: UIViewController, FoodRecipeView{
     }
     
     override func viewDidLoad(){
-        //self.navigationItem.title = dataSource.foodItem.name
+        
         super.viewDidLoad();
         setupTableView()
         delegate.viewDidLoad()
+        self.navigationItem.title = dataSource.foodItem.name
     
     }
     
@@ -46,7 +47,7 @@ class FoodRecipeViewController: UIViewController, FoodRecipeView{
         tableView.register(RecipeHeaderView.self, forHeaderFooterViewReuseIdentifier: RecipeHeaderView.reuseIdentifier)
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 40
-        tableView.sectionHeaderHeight = UITableView.automaticDimension
+        tableView.sectionHeaderHeight = 40
         tableView.sectionFooterHeight = UITableView.automaticDimension
         tableView.estimatedSectionHeaderHeight = 30.0
         tableView.estimatedSectionFooterHeight = 25
@@ -67,27 +68,27 @@ class FoodRecipeViewController: UIViewController, FoodRecipeView{
         
         
         //TODO: figure out how to get the right sections
-        
+        //TODO: clean up
         
         dataSource.getSections()     // janky
             .forEach { section in
-                if let firstRow = section.rows.first {
-                    
-                    if firstRow is FoodSummaryRowModel {
-                        
-                        snapshot.appendItems(section.rows)
-                        
-                    } else if firstRow is FoodRecipeRowModel {
+//                if let firstRow = section.rows.first {
+//
+//                    if firstRow is FoodSummaryRowModel {
+//
+//                        snapshot.appendItems(section.rows)
+//
+//                    } else if firstRow is FoodRecipeRowModel {
                         
                         snapshot.appendSections([section])
                         snapshot.appendItems(section.rows)
                         
-                    }
-                    
-                } else {
-	                    snapshot.appendSections([section])
-                }
-                
+//                    }
+//
+//                } else {
+//	                    snapshot.appendSections([section])
+//                }
+//
                 
             }
 
@@ -98,12 +99,30 @@ class FoodRecipeViewController: UIViewController, FoodRecipeView{
 extension FoodRecipeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return UITableView.automaticDimension
+       // Section is just an int, seems like have to do it manually
+       // Section 0 is FoodRecipeRowModel
+       // Section 1 is FoodSummaryRowModel
+        
+        if (section == 0){
+            return UITableView.automaticDimension
+        }
+        else {
+            return CGFloat.leastNormalMagnitude
+        }
+     //  return UITableView.automaticDimension
         
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return UITableView.automaticDimension
+        if (section == 0){
+
+            return 50
+        }
+        else {
+            return UITableView.automaticDimension
+        }
+        
+     //   return UITableView.automaticDimension
         //return CGFloat.leastNormalMagnitude
     }
     
@@ -117,13 +136,38 @@ extension FoodRecipeViewController: UITableViewDelegate {
         return view
     }
     
-//    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-//        let view = UILabel()
-//        view.numberOfLines = 0
-//        view.text = dataSource.foodItem.summary
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        if (section == 0){
+            
+            // setting footer with just a background color
+            // kinda ugly color with the rest white, gray is prob best
+
+            let footerView = UIView()
+            let color = UIColor(red: 0.871 ,green: 0.988, blue:  1.0,alpha: 1.0)
+            footerView.backgroundColor = color
+            return footerView
+            
+            // setting footer with just "Recipe" string
+//            let view = UIView()
+//            let footerView = UILabel()
+//            footerView.text = "Recipe"
 //
-//        return view
-//    }
+//            footerView.translatesAutoresizingMaskIntoConstraints = false
+//
+//            view.addSubview(footerView)
+//
+//            NSLayoutConstraint.activate([
+//                footerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+//                footerView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+//
+//            ])
+//            return view
+            
+        }
+        else {
+            return nil
+        }
+    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
