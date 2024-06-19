@@ -32,6 +32,7 @@ class FoodRecipeViewController: UIViewController, FoodRecipeView{
     override func viewDidLoad(){
         
         super.viewDidLoad();
+        
         setupTableView()
         delegate.viewDidLoad()
         self.navigationItem.title = dataSource.foodItem.name
@@ -52,6 +53,7 @@ class FoodRecipeViewController: UIViewController, FoodRecipeView{
         tableView.estimatedSectionHeaderHeight = 30.0
         tableView.estimatedSectionFooterHeight = 25
         tableView.isEditing = false
+        self.tableView.backgroundColor = .lightGray
         setupDiffableDataSource()
     }
     
@@ -103,23 +105,36 @@ extension FoodRecipeViewController: UITableViewDelegate {
        // Section 0 is FoodRecipeRowModel
        // Section 1 is FoodSummaryRowModel
         
-        if (section == 0){
+        guard let diffableDataSource = diffableDataSource else { return 0 }
+        
+        let sections = diffableDataSource.snapshot().sectionIdentifiers
+        let section = sections[section].section
+        
+        switch section {
+        case .recipe:
             return UITableView.automaticDimension
-        }
-        else {
+        case .summary:
             return CGFloat.leastNormalMagnitude
         }
+        
+//        if (section == 0){
+//            return UITableView.automaticDimension
+//        }
+//        else {
+//            return CGFloat.leastNormalMagnitude
+//        }
      //  return UITableView.automaticDimension
         
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        
         if (section == 0){
 
             return 50
         }
         else {
-            return UITableView.automaticDimension
+            return 0
         }
         
      //   return UITableView.automaticDimension
@@ -136,18 +151,18 @@ extension FoodRecipeViewController: UITableViewDelegate {
         return view
     }
     
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        if (section == 0){
-            
-            // setting footer with just a background color
-            // kinda ugly color with the rest white, gray is prob best
-
-            let footerView = UIView()
-            let color = UIColor(red: 0.871 ,green: 0.988, blue:  1.0,alpha: 1.0)
-            footerView.backgroundColor = color
-            return footerView
-            
-            // setting footer with just "Recipe" string
+//    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+//        if (section == 0){
+//
+//            // setting footer with just a background color
+//            // kinda ugly color with the rest white, gray is prob best
+////
+////            let footerView = UIView()
+////            let color = UIColor(red: 0.871 ,green: 0.988, blue:  1.0,alpha: 1.0)
+////            footerView.backgroundColor = color
+////            return footerView
+//
+//            // setting footer with just "Recipe" string
 //            let view = UIView()
 //            let footerView = UILabel()
 //            footerView.text = "Recipe"
@@ -162,12 +177,12 @@ extension FoodRecipeViewController: UITableViewDelegate {
 //
 //            ])
 //            return view
-            
-        }
-        else {
-            return nil
-        }
-    }
+//
+//        }
+//        else {
+//            return nil
+//        }
+//    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension

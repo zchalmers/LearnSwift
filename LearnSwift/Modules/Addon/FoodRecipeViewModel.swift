@@ -104,6 +104,7 @@ class FoodSummaryRowModel: RecipeRowModel {
         //TODO: FIX THE COLOR OF THIS SUMMARY
         
         cell.textLabel?.textColor = .black
+        
         return cell
     }
     

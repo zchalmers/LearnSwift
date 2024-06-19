@@ -24,6 +24,8 @@ final class RecipeHeaderView: UITableViewHeaderFooterView {
         contentView.addSubview(measurement)
         contentView.addSubview(separator)
         
+        contentView.backgroundColor = .white
+        
         ingredients.translatesAutoresizingMaskIntoConstraints = false
         measurement.translatesAutoresizingMaskIntoConstraints = false
         separator.translatesAutoresizingMaskIntoConstraints = false
