@@ -9,7 +9,27 @@ struct LearnSwiftEndpoint: Endpoint {
     var httpHeaders: [(key: HttpRequestHeaderKey, value: String)]?
     var body: Data?
     
-    init(host: String = "192.168.1.90", path: String, queryItems: [URLQueryItem]?,
+//    init(host: String = "192.168.1.90", path: String, queryItems: [URLQueryItem]?,
+//         httpMethod: HttpMethod = .GET, httpHeaders: [(key: HttpRequestHeaderKey, value: String)]? = nil) {
+//
+//        self.host = host
+//        self.path = path
+//        self.httpMethod = httpMethod
+//        self.queryItems = queryItems
+//        self.httpHeaders = httpHeaders
+//    }
+    
+//    init(host: String = "99.8.107.171", path: String, queryItems: [URLQueryItem]?,
+//         httpMethod: HttpMethod = .GET, httpHeaders: [(key: HttpRequestHeaderKey, value: String)]? = nil) {
+//
+//        self.host = host
+//        self.path = path
+//        self.httpMethod = httpMethod
+//        self.queryItems = queryItems
+//        self.httpHeaders = httpHeaders
+//    }
+    
+    init(host: String = "10.0.0.23", path: String, queryItems: [URLQueryItem]?,
          httpMethod: HttpMethod = .GET, httpHeaders: [(key: HttpRequestHeaderKey, value: String)]? = nil) {
         
         self.host = host

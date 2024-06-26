@@ -32,6 +32,7 @@
 		586609F22BC47B280075A2F9 /* FoodCategoryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586609F12BC47B280075A2F9 /* FoodCategoryRouter.swift */; };
 		586609F42BC47C5E0075A2F9 /* ViewControllerStackManaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586609F32BC47C5E0075A2F9 /* ViewControllerStackManaging.swift */; };
 		586609F62BC47D990075A2F9 /* FoodCategoryViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 586609F52BC47D990075A2F9 /* FoodCategoryViewController.storyboard */; };
+		7BCBAA162C249FFE00DC4463 /* UIFont+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCBAA152C249FFE00DC4463 /* UIFont+extension.swift */; };
 		926466EB2BD4856500FE364A /* FoodRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926466EA2BD4856500FE364A /* FoodRecipeViewController.swift */; };
 		926466EF2BD48EB600FE364A /* FoodRecipePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926466EE2BD48EB600FE364A /* FoodRecipePresenter.swift */; };
 		926466F12BD48EEB00FE364A /* FoodRecipeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 926466F02BD48EEB00FE364A /* FoodRecipeViewController.storyboard */; };
@@ -95,6 +96,7 @@
 		586609F12BC47B280075A2F9 /* FoodCategoryRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCategoryRouter.swift; sourceTree = "<group>"; };
 		586609F32BC47C5E0075A2F9 /* ViewControllerStackManaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerStackManaging.swift; sourceTree = "<group>"; };
 		586609F52BC47D990075A2F9 /* FoodCategoryViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FoodCategoryViewController.storyboard; sourceTree = "<group>"; };
+		7BCBAA152C249FFE00DC4463 /* UIFont+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+extension.swift"; sourceTree = "<group>"; };
 		926466EA2BD4856500FE364A /* FoodRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodRecipeViewController.swift; sourceTree = "<group>"; };
 		926466EE2BD48EB600FE364A /* FoodRecipePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodRecipePresenter.swift; sourceTree = "<group>"; };
 		926466F02BD48EEB00FE364A /* FoodRecipeViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FoodRecipeViewController.storyboard; sourceTree = "<group>"; };
@@ -196,15 +198,16 @@
 		586609DD2BC46F330075A2F9 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				7BCBAA142C249FD200DC4463 /* Extensions */,
 				92D00E972BDEF7DD00026CEE /* Networking */,
-				926466DF2BD47F9A00FE364A /* Addon */,
-				586609DE2BC46F6B0075A2F9 /* Master */,
-				586609DF2BC46F720075A2F9 /* Detail */,
+				926466DF2BD47F9A00FE364A /* Recipe */,
+				586609DE2BC46F6B0075A2F9 /* Category */,
+				586609DF2BC46F720075A2F9 /* Item */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
 		};
-		586609DE2BC46F6B0075A2F9 /* Master */ = {
+		586609DE2BC46F6B0075A2F9 /* Category */ = {
 			isa = PBXGroup;
 			children = (
 				586609B12BC46EEB0075A2F9 /* FoodCategoryViewController.swift */,
@@ -213,10 +216,10 @@
 				586609F12BC47B280075A2F9 /* FoodCategoryRouter.swift */,
 				586609F52BC47D990075A2F9 /* FoodCategoryViewController.storyboard */,
 			);
-			path = Master;
+			path = Category;
 			sourceTree = "<group>";
 		};
-		586609DF2BC46F720075A2F9 /* Detail */ = {
+		586609DF2BC46F720075A2F9 /* Item */ = {
 			isa = PBXGroup;
 			children = (
 				586609E72BC478250075A2F9 /* FoodItemViewController.swift */,
@@ -226,7 +229,7 @@
 				58080C732BC8AEED00050792 /* SectionHeaderView.swift */,
 				926466F62BD5E1AD00FE364A /* FoodItemRouter.swift */,
 			);
-			path = Detail;
+			path = Item;
 			sourceTree = "<group>";
 		};
 		586609E02BC471600075A2F9 /* Model */ = {
@@ -241,7 +244,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		926466DF2BD47F9A00FE364A /* Addon */ = {
+		7BCBAA142C249FD200DC4463 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7BCBAA152C249FFE00DC4463 /* UIFont+extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		926466DF2BD47F9A00FE364A /* Recipe */ = {
 			isa = PBXGroup;
 			children = (
 				926466EA2BD4856500FE364A /* FoodRecipeViewController.swift */,
@@ -251,7 +262,7 @@
 				92D00E952BD746AA00026CEE /* RecipeTableViewCell.swift */,
 				9293B7AF2BF5672600FD0D16 /* RecipeHeaderView.swift */,
 			);
-			path = Addon;
+			path = Recipe;
 			sourceTree = "<group>";
 		};
 		92D00E972BDEF7DD00026CEE /* Networking */ = {
@@ -416,6 +427,7 @@
 				586609EA2BC478460075A2F9 /* FoodCategoryPresenter.swift in Sources */,
 				586609F02BC47B020075A2F9 /* ErrorScreenRouter.swift in Sources */,
 				92D00EA32BDEFBD000026CEE /* Endpoint.swift in Sources */,
+				7BCBAA162C249FFE00DC4463 /* UIFont+extension.swift in Sources */,
 				92D00E962BD746AA00026CEE /* RecipeTableViewCell.swift in Sources */,
 				586609E82BC478260075A2F9 /* FoodItemViewController.swift in Sources */,
 				926466F72BD5E1AD00FE364A /* FoodItemRouter.swift in Sources */,
