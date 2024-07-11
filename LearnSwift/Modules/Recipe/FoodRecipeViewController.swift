@@ -95,7 +95,11 @@ class FoodRecipeViewController: UIViewController, FoodRecipeView{
 
         diffableDataSource?.apply(snapshot, animatingDifferences: animated)
     }
+    func setHeaderView(){
+        
+    }
 }
+
 
 extension FoodRecipeViewController: UITableViewDelegate {
     
