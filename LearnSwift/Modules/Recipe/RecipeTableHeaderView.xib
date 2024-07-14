@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="RecipeTableHeaderView" customModule="LearnSwift" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="622" height="283"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Mai Tai" translatesAutoresizingMaskIntoConstraints="NO" id="q1S-5q-TJN">
+                    <rect key="frame" x="0.0" y="59" width="622" height="190"/>
+                </imageView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="r26-A3-Qjs"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="r26-A3-Qjs" firstAttribute="bottom" secondItem="q1S-5q-TJN" secondAttribute="bottom" id="0EY-Ei-JWx"/>
+                <constraint firstItem="q1S-5q-TJN" firstAttribute="leading" secondItem="r26-A3-Qjs" secondAttribute="leading" id="Faw-nR-0BN"/>
+                <constraint firstItem="r26-A3-Qjs" firstAttribute="trailing" secondItem="q1S-5q-TJN" secondAttribute="trailing" id="LqX-jg-LjH"/>
+                <constraint firstItem="q1S-5q-TJN" firstAttribute="top" secondItem="r26-A3-Qjs" secondAttribute="top" id="dFZ-YA-Aca"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="imageView" destination="q1S-5q-TJN" id="nxL-FJ-mM8"/>
+            </connections>
+            <point key="canvasLocation" x="83.969465648854964" y="-71.478873239436624"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Mai Tai" width="720" height="720"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

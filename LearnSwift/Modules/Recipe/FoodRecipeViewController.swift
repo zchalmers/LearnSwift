@@ -20,6 +20,11 @@ class FoodRecipeViewController: UIViewController, FoodRecipeView{
     @IBOutlet weak var tableView: UITableView!
     var diffableDataSource: UITableViewDiffableDataSource<FoodRecipeSectionModel, RecipeRowModel>?
     
+    var headerView: RecipeTableHeaderView = {
+        let nib = UINib(nibName: "RecipeTableHeaderView", bundle: nil)
+        return nib.instantiate(withOwner: nil).first as! RecipeTableHeaderView
+    }()
+    
     class func instantiateViewController() -> FoodRecipeViewController {
         let bundle = Bundle(for: FoodRecipeViewController.self)
         let storyBoard = UIStoryboard(name: "FoodRecipeViewController", bundle: bundle)
@@ -30,13 +35,12 @@ class FoodRecipeViewController: UIViewController, FoodRecipeView{
     }
     
     override func viewDidLoad(){
-        
         super.viewDidLoad();
         self.view.backgroundColor = UIColor(named: "Primary Background")
         setupTableView()
+        setupHeaderView()
         delegate.viewDidLoad()
         self.navigationItem.title = dataSource.foodItem.name
-    
     }
     
     func updateView(){
@@ -54,6 +58,24 @@ class FoodRecipeViewController: UIViewController, FoodRecipeView{
         tableView.isEditing = false
         self.tableView.backgroundColor = UIColor(named: "Primary Grouped Background")
         setupDiffableDataSource()
+    }
+    
+    func setupHeaderView() {
+        
+        headerView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        if let image = UIImage(named: dataSource.foodItem.name) {
+            headerView.imageView.image = image
+        }
+        
+        headerView.frame = CGRect(
+            x: 0,
+            y: tableView.safeAreaInsets.top,
+            width: view.frame.width,
+            height: 225)
+        
+        
+        tableView.tableHeaderView = headerView
     }
     
     func setupDiffableDataSource(){
