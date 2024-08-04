@@ -7,6 +7,6 @@
 
 import Foundation
 protocol FoodItemRouter {
-    
     func navigateToRecipe(item: FoodItemRowModel)
+    func navigateToRecipeView(item: FoodItemRowModel)
 }

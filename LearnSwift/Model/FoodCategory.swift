@@ -8,8 +8,8 @@
 import Foundation
 
 // Define a struct to represent a food category
-public struct FoodCategory: Hashable, Decodable {
-    let id: String
-    let name: String
+public struct FoodCategory: Hashable, Decodable, Identifiable {
+    public let id: String
+    public let name: String
 
 }

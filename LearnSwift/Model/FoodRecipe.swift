@@ -7,8 +7,8 @@
 
 import Foundation
 
-public struct FoodRecipe: Hashable, Decodable{
-    let id: String
-    let foodItem: FoodItem
-    let foodIngredients: [FoodIngredients]
+public struct FoodRecipe: Hashable, Decodable, Identifiable {
+    public let id: String
+    public let foodItem: FoodItem
+    public let foodIngredients: [FoodIngredients]
 }

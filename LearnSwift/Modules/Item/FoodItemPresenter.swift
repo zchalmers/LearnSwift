@@ -53,7 +53,8 @@ extension FoodItemPresenter: FoodItemDelegate, UISearchResultsUpdating, UISearch
     }
     
     func didTap(row: FoodItemRowModel){
-        router.navigateToRecipe(item: row)
+//        router.navigateToRecipe(item: row)  // Use this to load ViewController using TableView and DiffableDataSource
+        router.navigateToRecipeView(item: row)  // Use this to load ViewController using SwiftUI View
     }
     
     // MARK: UISearchResultsUpdating

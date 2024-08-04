@@ -27,9 +27,22 @@ public class BaseRouter: FoodCategoryRouter, FoodItemRouter {
         viewStackManager.push(tableViewController, animated: true)
     }
     
+    
+    // Use this for a ViewController with TableView and DiffableDataSource
     func navigateToRecipe(item: FoodItemRowModel) {
         let recipeViewController = FoodRecipeViewController.instantiateViewController()
         let presenter = FoodRecipePresenter(view: recipeViewController, foodItem: item.item)
+        
+        recipeViewController.delegate = presenter
+        recipeViewController.dataSource = presenter
+        
+        viewStackManager.push(recipeViewController, animated: true)
+    }
+    
+    // Use this for ViewController using SwiftUI for View
+    func navigateToRecipeView(item: FoodItemRowModel) {
+        let recipeViewController = RecipeViewController()
+        let presenter = RecipeViewPresenter(view: recipeViewController, foodItem: item.item)
         
         recipeViewController.delegate = presenter
         recipeViewController.dataSource = presenter
