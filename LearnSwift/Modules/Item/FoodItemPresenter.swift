@@ -26,17 +26,17 @@ class FoodItemPresenter: NSObject {
     var foodCategory: FoodCategory
     var foodItems: [FoodItem]?
     var router: FoodItemRouter
-    var learnNetworkService: LearnSwiftNetworkService
+    var learnNetworkService: LearnSwiftService
     
     @Published var searchKey: String = ""
     var searchResult: AnyCancellable?
     
-    init(view: FoodItemView, foodCategory: FoodCategory, router: FoodItemRouter) {
+    init(view: FoodItemView, foodCategory: FoodCategory, router: FoodItemRouter, networkService: LearnSwiftService = LearnSwiftNetworkService()) {
         self.view = view
         self.foodCategory = foodCategory
         self.router = router
         self.viewModel = FoodItemViewModel(foodCategory: foodCategory)
-        self.learnNetworkService = LearnSwiftNetworkService()
+        self.learnNetworkService = networkService
     }
 }
 

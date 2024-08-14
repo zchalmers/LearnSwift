@@ -36,6 +36,8 @@
 		7B2BEBF92C40431C00D1DC3C /* RecipeTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2BEBF82C40431C00D1DC3C /* RecipeTableHeaderView.swift */; };
 		7B2BEBFE2C5AE8C800D1DC3C /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2BEBFD2C5AE8C800D1DC3C /* RecipeViewController.swift */; };
 		7B2BEC002C5AEB1B00D1DC3C /* RecipeViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2BEBFF2C5AEB1B00D1DC3C /* RecipeViewPresenter.swift */; };
+		7B9292B12C6A767300BFCFDC /* FoodItemPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9292B02C6A767300BFCFDC /* FoodItemPresenterTests.swift */; };
+		7B9292B42C6A851200BFCFDC /* LearnSwiftNetworkServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9292B32C6A851200BFCFDC /* LearnSwiftNetworkServiceMock.swift */; };
 		7BCBAA162C249FFE00DC4463 /* UIFont+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCBAA152C249FFE00DC4463 /* UIFont+extension.swift */; };
 		926466EB2BD4856500FE364A /* FoodRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926466EA2BD4856500FE364A /* FoodRecipeViewController.swift */; };
 		926466EF2BD48EB600FE364A /* FoodRecipePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926466EE2BD48EB600FE364A /* FoodRecipePresenter.swift */; };
@@ -106,6 +108,8 @@
 		7B2BEBF82C40431C00D1DC3C /* RecipeTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableHeaderView.swift; sourceTree = "<group>"; };
 		7B2BEBFD2C5AE8C800D1DC3C /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
 		7B2BEBFF2C5AEB1B00D1DC3C /* RecipeViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewPresenter.swift; sourceTree = "<group>"; };
+		7B9292B02C6A767300BFCFDC /* FoodItemPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodItemPresenterTests.swift; sourceTree = "<group>"; };
+		7B9292B32C6A851200BFCFDC /* LearnSwiftNetworkServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnSwiftNetworkServiceMock.swift; sourceTree = "<group>"; };
 		7BCBAA152C249FFE00DC4463 /* UIFont+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+extension.swift"; sourceTree = "<group>"; };
 		926466EA2BD4856500FE364A /* FoodRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodRecipeViewController.swift; sourceTree = "<group>"; };
 		926466EE2BD48EB600FE364A /* FoodRecipePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodRecipePresenter.swift; sourceTree = "<group>"; };
@@ -194,6 +198,8 @@
 		586609C32BC46EEE0075A2F9 /* LearnSwiftTests */ = {
 			isa = PBXGroup;
 			children = (
+				7B9292B22C6A84F500BFCFDC /* Networking */,
+				7B9292AF2C6A764D00BFCFDC /* Item */,
 				586609C42BC46EEE0075A2F9 /* LearnSwiftTests.swift */,
 			);
 			path = LearnSwiftTests;
@@ -265,6 +271,22 @@
 				7B2BEBFF2C5AEB1B00D1DC3C /* RecipeViewPresenter.swift */,
 			);
 			path = SwiftUI;
+			sourceTree = "<group>";
+		};
+		7B9292AF2C6A764D00BFCFDC /* Item */ = {
+			isa = PBXGroup;
+			children = (
+				7B9292B02C6A767300BFCFDC /* FoodItemPresenterTests.swift */,
+			);
+			path = Item;
+			sourceTree = "<group>";
+		};
+		7B9292B22C6A84F500BFCFDC /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				7B9292B32C6A851200BFCFDC /* LearnSwiftNetworkServiceMock.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		7BCBAA142C249FD200DC4463 /* Extensions */ = {
@@ -480,7 +502,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B9292B42C6A851200BFCFDC /* LearnSwiftNetworkServiceMock.swift in Sources */,
 				586609C52BC46EEE0075A2F9 /* LearnSwiftTests.swift in Sources */,
+				7B9292B12C6A767300BFCFDC /* FoodItemPresenterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -718,7 +742,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LH8GY3DHHE;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.personal.LearnSwiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -738,7 +762,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LH8GY3DHHE;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.personal.LearnSwiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
