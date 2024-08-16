@@ -2,7 +2,7 @@
 //  FoodDetail.swift
 //  LearnSwift
 //
-//  Created by Chalmers, Chris on 4/8/24.
+//  Created by Zach on 4/8/24.
 //
 
 import Foundation
